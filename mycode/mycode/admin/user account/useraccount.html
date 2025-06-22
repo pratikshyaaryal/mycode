@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>User Accounts</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    h1 {
+      color: #4a6cf7;
+      margin-bottom: 25px;
+      border-bottom: 3px solid #d7d9dc;
+      padding-bottom: 10px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      font-size: 1em;
+    }
+
+    th {
+      background-color: #4a6cf7;;
+      color: white;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    tr:hover {
+      background-color: #e9f0ff;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+      tr {
+        margin-bottom: 20px;
+        border-bottom: 2px solid #4a6cf7;;
+        padding-bottom: 10px;
+      }
+      td {
+        border: none;
+        padding-left: 50%;
+        position: relative;
+        font-size: 0.9em;
+      }
+      td:before {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: 600;
+        color: #010912;
+        content: attr(data-label);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>User Accounts</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Sex</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Name">John Smith</td>
+        <td data-label="Email">john.smith@example.com</td>
+        <td data-label="Sex">Male</td>
+        <td data-label="Age">34</td>
+      </tr>
+      <tr>
+        <td data-label="Name">Maria Garcia</td>
+        <td data-label="Email">maria.garcia@example.com</td>
+        <td data-label="Sex">Female</td>
+        <td data-label="Age">29</td>
+      </tr>
+      <tr>
+        <td data-label="Name">Liam Wong</td>
+        <td data-label="Email">liam.wong@example.com</td>
+        <td data-label="Sex">Male</td>
+        <td data-label="Age">41</td>
+      </tr>
+      <tr>
+        <td data-label="Name">Fatima Khan</td>
+        <td data-label="Email">fatima.khan@example.com</td>
+        <td data-label="Sex">Female</td>
+        <td data-label="Age">37</td>
+      </tr>
+      <tr>
+        <td data-label="Name">Carlos Diaz</td>
+        <td data-label="Email">carlos.diaz@example.com</td>
+        <td data-label="Sex">Male</td>
+        <td data-label="Age">26</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

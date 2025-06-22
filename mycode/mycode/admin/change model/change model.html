@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Change Model - SmartCT</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 400px;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 35px;
+      color: #4a6cf7;
+      font-size: 30px;
+    }
+
+    .current-model {
+      font-size: 1em;
+      margin-bottom: 25px;
+      color: #333;
+      text-align: center;
+    }
+
+    .file-input-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-name {
+      color: #004085;
+      font-weight: 600;
+      margin-bottom: 10px;
+      user-select: none;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    .btn-choose {
+      background: linear-gradient(135deg, #6aa9ff, #4a6cf7);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-choose:hover {
+      background: linear-gradient(135deg, #365fd1, #1d46a9);
+    }
+
+    .btn-upload {
+      background-color: #4a6cf7;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-upload:hover {
+      background-color: #2f50d4;
+    }
+
+    @media (max-width: 450px) {
+      .wrapper {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Change Model</h1>
+
+    <p class="current-model"><strong>Current Model:</strong> SmartCT Model v1.2</p>
+
+    <div class="file-input-wrapper">
+      <input type="file" id="modelFile" accept=".h5,.pt,.model,.bin" multiple />
+      <div class="file-name" id="fileName">No file chosen</div>
+      <button type="button" class="btn-choose" id="chooseBtn">Choose File</button>
+    </div>
+
+    <button class="btn-upload" id="uploadBtn">Upload & Replace Model</button>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('modelFile');
+    const chooseBtn = document.getElementById('chooseBtn');
+    const fileNameDisplay = document.getElementById('fileName');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const currentModelElem = document.querySelector('.current-model');
+
+    chooseBtn.addEventListener('click', () => fileInput.click());
+
+    fileInput.addEventListener('change', () => {
+      const count = fileInput.files.length;
+
+      if (count === 0) {
+        fileNameDisplay.textContent = "No file chosen";
+      } else if (count === 1) {
+        fileNameDisplay.textContent = `${fileInput.files[0].name}`;
+      } else {
+        fileNameDisplay.textContent = `${count} files selected`;
+      }
+    });
+
+    uploadBtn.addEventListener('click', () => {
+      if (fileInput.files.length === 0) {
+        alert("Please select a model file to upload.");
+        return;
+      }
+
+      const fileNames = Array.from(fileInput.files).map(f => f.name).join(", ");
+      alert(`Model(s) "${fileNames}" uploaded successfully!`);
+
+      // Update current model to first selected file
+      currentModelElem.innerHTML = `<strong>Current Model:</strong> ${fileInput.files[0].name}`;
+
+      // Reset
+      fileInput.value = "";
+      fileNameDisplay.textContent = "No file chosen";
+    });
+  </script>
+</body>
+</html>
