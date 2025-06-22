@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Date of Birth</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-box {
+      background-color: white;
+      padding: 40px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056cc;
+    }
+
+    .back-link-wrapper {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.back-link {
+  font-size: 16px;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>Edit Date of Birth</h2>
+    <form>
+      <label>New Date of Birth</label>
+      <input type="date" required>
+
+      <button type="submit">Update DOB</button>
+    </form>
+   <div class="back-link-wrapper">
+  <a onclick="history.back()" class="back-link">← Back to Settings</a>
+</div>
+
+  </div>
+</body>
+</html>
