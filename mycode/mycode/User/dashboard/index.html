@@ -248,7 +248,7 @@
 
       <div class="admin-info">
         <div class="admin-wrapper">
-          <a href="#" class="admin-button" onclick="toggleAdminMenu()">👤 <strong>Admin</strong></a>
+          <a href="#" class="admin-button" onclick="toggleAdminMenu()">👤 <strong id="username">Admin</strong></a>
           <div class="dropdown-box" id="adminDropdown">
             <a href="#">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -260,7 +260,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M15 14c-1.31 0-2.42.83-2.83 2H8v2h4.17a3.001 3.001 0 0 0 5.66 0H20v-2h-2.17c-.41-1.17-1.52-2-2.83-2zm-3-2a4 4 0 1 0-0.001-8.001A4 4 0 0 0 12 12zm6 8h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z"/>
               </svg>
-              Add Account
+              Add Another Account
             </a>
           </div>
         </div>
@@ -273,14 +273,11 @@
 
       <div class="stats">
         <div class="stat-box"><a href="#">Total Scans</a>
-        <P>2</P>
-      </div>
+        <p>2</p></div>
         <div class="stat-box"><a href="#">Accuracy Rate</a>
-        <P>74%</P>
-      </div>
+        <p>74%</p></div>
         <div class="stat-box"><a href="#">Average Time</a>
-        <P>2 seconds</P>
-      </div>
+        <p>2 seconds</p></div>
       </div>
 
       <div class="actions">
@@ -292,12 +289,16 @@
   </div>
 
   <script>
-    // Admin dropdown toggle
+    // Set logged-in username here
+    const currentUser = "zxy"; // Change this value dynamically if needed
+
+    // Toggle Admin dropdown
     function toggleAdminMenu() {
       const dropdown = document.getElementById('adminDropdown');
       dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
     }
 
+    // Close dropdown if clicked outside
     document.addEventListener('click', function(event) {
       const dropdown = document.getElementById('adminDropdown');
       const adminArea = document.querySelector('.admin-info');
@@ -306,8 +307,12 @@
       }
     });
 
-    // Sidebar link highlighting
+    // Sidebar and Username logic
     document.addEventListener('DOMContentLoaded', () => {
+      // Set dynamic username
+      document.getElementById('username').textContent = currentUser;
+
+      // Sidebar active link
       const sidebarLinks = document.querySelectorAll('#sidebar-links a');
       sidebarLinks.forEach(link => {
         link.addEventListener('click', function () {
